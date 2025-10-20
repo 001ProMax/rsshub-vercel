@@ -1,9 +1,0 @@
-import"./esm-shims-rNwigI-Q.js";import"./config-CVBRPN4O.js";import"./logger-BvonkID1.js";import"./ofetch-CeMUzp5K.js";import"./helpers-qpI1t-yV.js";import{cache_default as e}from"./cache-Dfid4xgQ.js";import"./parse-date-DHsdom8D.js";import{got_default as t}from"./got-Di2lBekK.js";import"./timezone-CMz5pnRe.js";import{utils_default as n}from"./utils-DxSmZWRc.js";import{load as r}from"cheerio";const i={path:`/user/:uid/:type?/:option?`,categories:[`new-media`],example:`/pingwest/user/7781550877/article`,parameters:{uid:`用户id, 可从用户主页中得到`,type:"内容类型, 默认为`article`",option:`参数`},features:{requireConfig:!1,requirePuppeteer:!1,antiCrawler:!1,supportBT:!1,supportPodcast:!1,supportScihub:!1},radar:[{source:[`pingwest.com/user/:uid/:type`,`pingwest.com/`],target:`/user/:uid/:type`}],name:`用户`,maintainers:[`sanmmm`],handler:a,description:`内容类型
-
-| 文章    | 动态  |
-| ------- | ----- |
-| article | state |
-
-  参数
-
-  -   \`fulltext\`，全文输出，例如：\`/pingwest/user/7781550877/article/fulltext\``};async function a(i){let{uid:a,type:o=`article`,option:s}=i.req.param(),c=`https://www.pingwest.com`,l=`${c}/user/${a}/${o}`,{userName:u,realUid:d,userSign:f,userAvatar:p}=await e.tryGet(`pingwest:user:info:${a}`,async()=>{let e=r((await t(l,{headers:{Referer:c}})).data),n=e(`#J_userId`);return{userName:n.text(),realUid:n.attr(`data-user-id`),userSign:e(`#J_userSign`).text(),userAvatar:e(`#J_userAvatar`).attr(`src`)}}),m=r((await t(`${c}/api/user_data`,{searchParams:{page:1,user_id:d,tab:o},headers:{Referer:c}})).data.data.list),h=[],g=s===`fulltext`;switch(o){case`article`:h=await n.articleListParser(m,g,e);break;case`state`:h=n.statusListParser(m);break}return{title:`品玩 - ${u} - ${{article:`文章`,state:`动态`}[o]}`,description:f,image:p,link:l,item:h}}export{i as route};
