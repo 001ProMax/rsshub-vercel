@@ -1,1 +1,0 @@
-var e=class extends Error{name=`ConfigNotFoundError`};export{e as config_not_found_default};

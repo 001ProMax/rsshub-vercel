@@ -1,1 +1,0 @@
-const e=`https://www.odaily.news`;export{e as rootUrl};

@@ -1,0 +1,1 @@
+import{t as e}from"./ofetch-CRUPiVpr.js";import{t}from"./cache-CpEhLexq.js";function n(n,r){return t.tryGet(n,async()=>r(await e(n)))}export{n as t};

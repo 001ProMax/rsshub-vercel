@@ -1,0 +1,3 @@
+import"./esm-shims-CMsyBHYK.js";import"./config-DZMnNPig.js";import"./logger-asV68Lay.js";import"./ofetch-CRUPiVpr.js";import"./helpers-Cqaav28H.js";import{t as e}from"./cache-CpEhLexq.js";import"./render-d6AVTUl2.js";import"./parse-date-CHEO0z5G.js";import"./got-BlqYKpVp.js";import{o as t,r as n,t as r}from"./utils-D1Ss_qsj.js";const i={path:[`/users/:id/:type/:language?`,`/:type/:id/:language?`],name:`Unknown`,maintainers:[],handler:a,description:`| Wanted     | Watched     | Owned     |
+| ---------- | ----------- | --------- |
+| userwanted | userwatched | userowned |`,features:{nsfw:!0}};async function a(i){let a=i.req.param(`id`),o=i.req.param(`type`),s=i.req.param(`language`)??n;return await r(s,`${t}/${s}/${o}.php?list&u=${a}`,e.tryGet)}export{i as route};

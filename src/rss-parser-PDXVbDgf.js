@@ -1,1 +1,0 @@
-import{config as e}from"./config-CVBRPN4O.js";import t from"rss-parser";var n=new t({customFields:{item:[`magnet`]},headers:{"User-Agent":e.ua}});export{n as rss_parser_default};

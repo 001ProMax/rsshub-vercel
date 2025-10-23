@@ -1,0 +1,10 @@
+import{n as e,t}from"./esm-shims-CMsyBHYK.js";import"./config-DZMnNPig.js";import"./logger-asV68Lay.js";import"./ofetch-CRUPiVpr.js";import"./helpers-Cqaav28H.js";import{t as n}from"./render-d6AVTUl2.js";import{t as r}from"./parse-date-CHEO0z5G.js";import{t as i}from"./got-BlqYKpVp.js";import a from"node:path";e();const o={path:`/inquire/:category?/:select?/:keyword?`,categories:[`finance`],example:`/szse/inquire`,parameters:{category:"类型，见下表，默认为 `0` 即 主板",select:`函件类别, 见下表，默认为全部函件类别`,keyword:`公司代码或简称，默认为空`},features:{requireConfig:!1,requirePuppeteer:!1,antiCrawler:!1,supportBT:!1,supportPodcast:!1,supportScihub:!1},radar:[{source:[`szse.cn/disclosure/supervision/inquire/index.html`,`szse.cn/`],target:`/inquire`}],name:`问询函件`,maintainers:[`Jeason0228`,`nczitzk`],handler:s,url:`szse.cn/disclosure/supervision/inquire/index.html`,description:`类型
+
+| 主板 | 创业板 |
+| ---- | ------ |
+| 0    | 1      |
+
+  函件类别
+
+| 全部函件类别 | 非许可类重组问询函 | 问询函 | 违法违规线索分析报告 | 许可类重组问询函 | 监管函（会计师事务所模板） | 提请关注函（会计师事务所模板） | 年报问询函 | 向中介机构发函 | 半年报问询函 | 关注函 | 公司部函 | 三季报问询函 |
+| ------------ | ------------------ | ------ | -------------------- | ---------------- | -------------------------- | ------------------------------ | ---------- | -------------- | ------------ | ------ | -------- | ------------ |`};async function s(e){let o=e.req.param(`category`)??`0`,s=e.req.param(`select`)??`全部函件类别`,c=e.req.param(`keyword`)??``,l=`https://www.szse.cn`,u=(await i({method:`get`,url:`${l}/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=main_wxhj&TABKEY=tab${Number.parseInt(o)+2}${s===`全部函件类别`?``:`&selecthjlb=${s}`}${c?`&txtZqdm=${c}`:``}`})).data[o],d=u.data.map(e=>(e.ck=e.ck.match(/encode-open='\/(.*)'>详细内容/)[1],e.hfck=e.hfck.replace(/encode-open='\//,`encode-open='http://reportdocs.static.szse.cn/`),{title:`[${e.gsdm}] ${e.gsjc} (${e.hjlb})`,link:`http://reportdocs.static.szse.cn/${e.ck}`,pubDate:r(e.fhrq),description:n(a.join(t,`templates/inquire-f3567413.art`),{item:e})}));return{title:`深圳证券交易所 - 问询函件 - ${u.metadata.name}`,link:`${l}/disclosure/supervision/inquire/index.html`,item:d,description:`函件类别：${s}${c?`; 公司代码或简称：${c}`:``}`}}export{o as route};

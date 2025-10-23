@@ -1,1 +1,0 @@
-import{__dirname as e,init_esm_shims as t}from"./esm-shims-rNwigI-Q.js";import{art as n}from"./render-DftO2d-b.js";import r from"node:path";t();const i=e=>e.props.pageProps.data.summary+e.props.pageProps.data.memo,a=t=>n(r.join(e,`templates/work-3a78c1e3.art`),{data:t.props.pageProps.data});export{i as extractArticle,a as extractWork};

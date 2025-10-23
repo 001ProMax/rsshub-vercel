@@ -1,1 +1,0 @@
-import{config as e}from"./config-CVBRPN4O.js";const t=()=>({accept:`application/json, text/javascript, */*; q=0.01`,cookie:e.smzdm.cookie,"x-requested-with":`XMLHttpRequest`});export{t as getHeaders};

@@ -1,1 +1,0 @@
-const e=`https://www.gitpod.io`;export{e as rootUrl};

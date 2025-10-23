@@ -1,0 +1,1 @@
+import{t as e}from"./got-BlqYKpVp.js";import{load as t}from"cheerio";const n=(n,r)=>r(n.link,async()=>{let r=t((await e({method:`get`,url:n.link})).data);return r(`.article-nfh-icon, .article-crumb, .article-share, .article-copyright`).remove(),n.description+=r(`#content`).html()??``,n.author=r(`meta[name="author"]`).attr(`content`),n});export{n as t};

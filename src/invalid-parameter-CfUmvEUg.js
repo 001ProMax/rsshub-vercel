@@ -1,1 +1,0 @@
-var e=class extends Error{name=`InvalidParameterError`};export{e as invalid_parameter_default};

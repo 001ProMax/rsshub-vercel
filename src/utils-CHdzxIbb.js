@@ -1,1 +1,0 @@
-const e=`https://www.agemys.org`;export{e as rootUrl};

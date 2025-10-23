@@ -1,5 +1,0 @@
-import"./esm-shims-rNwigI-Q.js";import"./config-CVBRPN4O.js";import"./logger-BvonkID1.js";import"./ofetch-CeMUzp5K.js";import"./helpers-qpI1t-yV.js";import{got_default as e}from"./got-Di2lBekK.js";const t=async t=>{let{data:n}=await e.get(`https://curiouscat.me/api/v2/profile?username=`+t);return n},n={path:`/user/:id`,radar:[{source:[`curiouscat.live/:id`]}],name:`Unknown`,maintainers:[`lucasew`],handler:r};async function r(e){let n=e.req.param(`id`),r=await t(n),i=r.posts.map(e=>{let t=e.senderData.id?e.senderData.username:`Anonymous`,r=`@${t}: ${e.comment}`,i=`https://curiouscat.live/${n}/post/${e.id}`,a=e.media?`<img src="${e.media.img}"></img>`:``;return{author:t,link:i,title:r,description:`${e.comment}<br><br>
-        ${e.reply}
-        ${a}
-        <br>
-        Likes: ${e.likes}`,pubDate:new Date(e.timestamp*1e3)}});return{title:`CuriousCat - ${n}`,link:`https://curiouscat.live/${n}`,description:`Questions answered by ${n} using CuriousCat`,language:r.lang,item:i}}export{n as route};

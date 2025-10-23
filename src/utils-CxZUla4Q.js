@@ -1,1 +1,0 @@
-import{got_default as e}from"./got-Di2lBekK.js";const t=async(t=[])=>(await e(`https://api.inews.qq.com/newsqa/v1/query/inner/publish/modules/list?modules=`+t.join(`,`))).data;export{t as getData};

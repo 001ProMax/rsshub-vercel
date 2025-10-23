@@ -1,0 +1,1 @@
+import{t as e}from"./config-DZMnNPig.js";import{t}from"./config-not-found-CX6cWM57.js";const n=new Set([`91porn.com`,`www.91porn.com`,`0122.91p30.com`,`www.91zuixindizhi.com`,`w1218.91p46.com`]),r=r=>{if(!e.feature.allow_user_supply_unsafe_domain&&!n.has(r))throw new t(`This RSS is disabled unless 'ALLOW_USER_SUPPLY_UNSAFE_DOMAIN' is set to 'true'.`)};export{r as t};

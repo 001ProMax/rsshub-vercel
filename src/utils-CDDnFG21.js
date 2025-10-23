@@ -1,1 +1,0 @@
-import{got_default as e}from"./got-Di2lBekK.js";const t=`http://www.yxdown.com`,n=async()=>(await e(t)).data.match(/(?<=.cookie=").*(?=; path)/g)[0];export{n as getCookie,t as rootUrl};

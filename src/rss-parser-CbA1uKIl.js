@@ -1,0 +1,1 @@
+import{t as e}from"./config-DZMnNPig.js";import t from"rss-parser";var n=new t({customFields:{item:[`magnet`]},headers:{"User-Agent":e.ua}});export{n as t};

@@ -1,0 +1,12 @@
+import"./esm-shims-CMsyBHYK.js";import{t as e}from"./config-DZMnNPig.js";import"./logger-asV68Lay.js";import"./ofetch-CRUPiVpr.js";import"./helpers-Cqaav28H.js";import"./cache-CpEhLexq.js";import"./render-d6AVTUl2.js";import"./parse-date-CHEO0z5G.js";import"./got-BlqYKpVp.js";import{t}from"./types-Bn7An2Wc.js";import{t as n}from"./invalid-parameter-CLGd_tte.js";import{t as r}from"./config-not-found-CX6cWM57.js";import{n as i,t as a}from"./readable-social-D1ub39Fn.js";import{t as o}from"./utils-C37B6rv9.js";import s from"node:querystring";const c={path:`/users/notes/:username/:routeParams?`,categories:[`social-media`],view:t.SocialMedia,example:`/misskey/users/notes/support@misskey.io`,parameters:{username:`Misskey username in the format of username@instance.domain`,routeParams:`
+| Key               | Description                             | Accepted Values | Default |
+| ----------------- | --------------------------------------- | --------------- | ------- |
+| withRenotes       | Include renotes in the timeline         | 0/1/true/false  | false   |
+| mediaOnly         | Only return posts containing media      | 0/1/true/false  | false   |
+| simplifyAuthor    | Simplify author field in feed items     | 0/1/true/false  | false   |
+
+Note: \`withRenotes\` and \`mediaOnly\` are mutually exclusive and cannot both be set to true.
+
+Examples:
+- /misskey/users/notes/mttb2ccp@misskey.io/withRenotes=true
+- /misskey/users/notes/mttb2ccp@misskey.io/mediaOnly=true`},features:{requireConfig:!1,requirePuppeteer:!1,antiCrawler:!1,supportBT:!1,supportPodcast:!1,supportScihub:!1},name:`User timeline`,maintainers:[`siygle`,`SnowAgar25`,`HanaokaYuzu`],handler:l};async function l(t){let c=t.req.param(`username`),[,l,u]=c.match(/@?(\w+)@(\w+\.\w+)/)||[];if(!l||!u)throw new n(`Provide a valid Misskey username`);if(!e.feature.allow_user_supply_unsafe_domain&&!o.allowSiteList.includes(u))throw new r(`This RSS is disabled unless 'ALLOW_USER_SUPPLY_UNSAFE_DOMAIN' is set to 'true'.`);let d=s.parse(t.req.param(`routeParams`)),f=a(void 0,i(d.withRenotes),!1),p=a(void 0,i(d.mediaOnly),!1),m=a(void 0,i(d.simplifyAuthor),!1);if(f&&p)throw new n(`withRenotes and mediaOnly cannot both be true.`);let{accountData:h,avatarUrl:g}=await o.getUserTimelineByUsername(l,u,{withRenotes:f,mediaOnly:p});return{title:`User timeline for ${c} on ${u}`,link:`https://${u}/@${l}`,image:g??``,item:o.parseNotes(h,u,m)}}export{c as route};

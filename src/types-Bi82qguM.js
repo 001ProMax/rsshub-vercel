@@ -1,1 +1,0 @@
-let e=function(e){return e[e.Articles=0]=`Articles`,e[e.SocialMedia=1]=`SocialMedia`,e[e.Pictures=2]=`Pictures`,e[e.Videos=3]=`Videos`,e[e.Audios=4]=`Audios`,e[e.Notifications=5]=`Notifications`,e}({});export{e as ViewType};

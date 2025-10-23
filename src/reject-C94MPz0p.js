@@ -1,1 +1,0 @@
-var e=class extends Error{name=`RejectError`};export{e as reject_default};

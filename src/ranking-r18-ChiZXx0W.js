@@ -1,0 +1,20 @@
+import{n as e,t}from"./esm-shims-CMsyBHYK.js";import{t as n}from"./render-d6AVTUl2.js";import{t as r}from"./invalid-parameter-CLGd_tte.js";import i from"node:path";import{NarouNovelFetch as a,R18Site as o,SearchBuilderR18 as s}from"narou";e();let c=function(e){return e.NOCTURNE=`noc`,e.MOONLIGHT=`mnlt`,e.MIDNIGHT=`mid`,e.MOONLIGHT_BL=`mnlt-bl`,e}({}),l=function(e){return e.DAILY=`daily`,e.WEEKLY=`weekly`,e.MONTHLY=`monthly`,e.QUARTER=`quarter`,e.YEARLY=`yearly`,e}({}),u=function(e){return e.TOTAL=`total`,e.SHORT=`t`,e.ONGOING=`r`,e.COMPLETE=`er`,e}({});const d={[c.NOCTURNE]:o.Nocturne,[c.MOONLIGHT]:o.MoonLight,[c.MOONLIGHT_BL]:o.MoonLightBL,[c.MIDNIGHT]:o.Midnight},f={[c.NOCTURNE]:`ノクターン`,[c.MOONLIGHT]:`ムーンライト`,[c.MOONLIGHT_BL]:`ムーンライト BL`,[c.MIDNIGHT]:`ミッドナイト`},p={[l.DAILY]:`dailypoint`,[l.WEEKLY]:`weeklypoint`,[l.MONTHLY]:`monthlypoint`,[l.QUARTER]:`quarterpoint`,[l.YEARLY]:`yearlypoint`},m={[l.DAILY]:`日間`,[l.WEEKLY]:`週間`,[l.MONTHLY]:`月間`,[l.QUARTER]:`四半期`,[l.YEARLY]:`年間`},h={[u.TOTAL]:`総合`,[u.SHORT]:`短編`,[u.ONGOING]:`連載中`,[u.COMPLETE]:`完結済`},g={path:`/rankingr18/:sub/:type`,categories:[`reading`],example:`/syosetu/rankingr18/noc/daily_total?limit=50`,parameters:(()=>{let e=Object.entries(c).map(([,e])=>({value:e,label:f[e]})),t=Object.entries(l).map(([e,t])=>({value:t,label:`${m[t]} (${e})`})),n=Object.entries(u).map(([e,t])=>({value:t,label:`${h[t]} (${e})`}));return{sub:{description:`Target site for R18 rankings`,options:e},type:{description:`Detailed ranking type (format: period_noveltype)`,options:t.flatMap(e=>n.map(t=>({value:`${e.value}_${t.value}`,label:`${e.label} ${t.label}`})))}}})(),features:{requireConfig:!1,requirePuppeteer:!1,antiCrawler:!1,supportBT:!1,supportPodcast:!1,supportScihub:!1},name:`R18 Rankings`,url:`syosetu.com/site/group`,maintainers:[`SnowAgar25`],handler:y,description:`
+| Period | Description | 説明 |
+| --- | --- | --- |
+| daily | Daily Ranking | 日間ランキング |
+| weekly | Weekly Ranking | 週間ランキング |
+| monthly | Monthly Ranking | 月間ランキング |
+| quarter | Quarterly Ranking | 四半期ランキング |
+| yearly | Yearly Ranking | 年間ランキング |
+
+| Novel Type | Description | 説明 |
+| --- | --- | --- |
+| total | All Works | 総合 |
+| t | Short Stories | 短編 |
+| r | Ongoing Series | 連載中 |
+| er | Completed Series | 完結済 |
+
+::: tip
+Combine Period and Novel Type with \`_\`.
+For example: \`daily_total\`, \`weekly_r\`, \`monthly_er\`
+:::`,radar:[{source:[`noc.syosetu.com/rank/list/type/:type`],target:`/rankingr18/noc/:type`},{source:[`mid.syosetu.com/rank/list/type/:type`],target:`/rankingr18/mid/:type`},{source:[`mnlt.syosetu.com/rank/list/type/:type`],target:`/rankingr18/mnlt/:type`},{source:[`mnlt.syosetu.com/rank/bllist/type/:type`],target:`/rankingr18/mnlt-bl/:type`},...(()=>Object.entries(c).flatMap(([,e])=>Object.values(l).map(t=>({title:`${f[e]} ${m[t]}ランキング BEST5`,source:[`${e===c.MOONLIGHT_BL?c.MOONLIGHT:e}.syosetu.com/rank/${e===c.MOONLIGHT_BL?`bltop`:`top`}`],target:`/rankingr18/${e}/${t}_${u.TOTAL}?limit=5`}))))()]};function _(e){let[t,n]=e.split(`_`),i=t,a=n;if(![Object.values(l).includes(i),Object.values(u).includes(a)].every(Boolean))throw new r(`Invalid ranking type: ${e}`);return{period:t,novelType:n}}function v(e,t){let{period:n,novelType:r}=_(e);return`${m[n]}${h[r]}ランキング BEST${t}`}async function y(e){let{sub:o,type:l}=e.req.param(),f=`${`https://${o===c.MOONLIGHT_BL?c.MOONLIGHT:o}.syosetu.com`}/rank/list/type/${l}`,m=new a,h=Math.min(Number(e.req.query(`limit`)??300),300),{period:g,novelType:y}=_(l),b={gzip:5,lim:h,order:p[g]};if(y!==u.TOTAL&&(b.type=y),!(o in d))throw new r(`Invalid subsite: ${o}`);let x=d[o],S=(await new s(b,m).r18Site(x).execute()).values.map((e,r)=>({title:`#${r+1} ${e.title}`,link:`https://novel18.syosetu.com/${String(e.ncode).toLowerCase()}`,description:n(i.join(t,`templates/description-e1f33e28.art`),{novel:e}),author:e.writer,category:e.keyword.split(/[\s/\uFF0F]/).filter(Boolean)}));return{title:`小説家になろう (${o}) - ${v(l,h)}`,link:f,item:S,language:`ja`}}export{g as route};
